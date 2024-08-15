@@ -11,7 +11,7 @@ const startServer = async () => {
       await connectDb();
 
       const warmCache = async () => {
-        const users = await User.find({});
+        const users = await User.findAll();
         await setCache('users', users, 3600);
       };
       
