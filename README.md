@@ -7,9 +7,13 @@ Kontex is an educational platform designed to facilitate the creation and manage
 The core features include:
 
 **User Management**: Register, login, and manage user profiles.
+
 **Course Management**: Create, update, and delete courses with detailed descriptions.
+
 **Lesson Management**: Manage lessons associated with specific courses, including content creation and updates.
+
 **Search Functionality**: Users can search for courses, lessons, and users by keywords.
+
 **Security**: Robust security practices are implemented to protect user data and secure the application from common web vulnerabilities.
 
 
