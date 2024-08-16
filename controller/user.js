@@ -172,7 +172,7 @@ const reset = async (req, res) => {
             `Hi ${user.name},\n\nYour password has been reset successfully. If this was not you, please contact support immediately.\n\nBest regards,\nKontex Team`
         );
         
-        res.status(200).send({'password resetted successfully': user});
+        res.status(200).send({'password reset successfully': user});
     } catch (error) {
         console.error(error);
         res.status(500).send({ error: 'error resetting password', details: error.message });
