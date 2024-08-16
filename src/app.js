@@ -1,5 +1,6 @@
 const express = require('express');
 const { Client } = require('pg');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 const app = express();
 const syncDb = require('../src/sync');
