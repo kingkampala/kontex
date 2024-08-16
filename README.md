@@ -23,24 +23,28 @@ The core features include:
 To run the Kontex application locally, follow the steps below:
 
 1. **Clone the Repository**
+
 First, clone the repository to your local machine using the following command:
 ```
 git clone https://github.com/kingkampala/kontex.git
 ```
 
 2. **Navigate to the Project Directory**
+
 Change into the project's root directory:
 ```
 cd kontex
 ```
 
 3. **Install Dependencies**
+
 Install all required dependencies using `npm`:
 ```
 npm install
 ```
 
 4. **Create a `.env` File**
+
 Create a `.env` file in the root directory of the project and add the following environment variables:
 ```
 PORT=2810
@@ -55,6 +59,7 @@ EMAIL_PASSWORD=your_email_password
 Replace the placeholders with your actual credentials or use the provided values.
 
 5. **Start the Application**
+
 Start the application using the following command:
 ```
 npm start
@@ -62,9 +67,11 @@ npm start
 The application will run on `http://localhost:2810` by default. If the specified port is already in use, you can modify the `PORT` in your `.env` file.
 
 6. **Test the Application**
+
 After starting the application, you can test the API endpoints using tools like Postman or cURL.
 
-7. **Stop the Application**
+8. **Stop the Application**
+
 To stop the application, use `Ctrl + C` in the terminal where the application is running.
 
 
