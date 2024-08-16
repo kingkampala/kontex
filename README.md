@@ -148,3 +148,78 @@ Response;
   "message": "user deleted successfully"
 }
 ```
+
+
+### Course Endpoint
+**Create a New Course**: POST `/course`
+```
+Request;
+{
+  "title": "Introduction to Node.js",
+  "description": "Learn the basics of Node.js, including modules, event-driven programming, and more."
+}
+
+Response;
+{
+  "course created successfully": {
+    "id": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc",
+    "title": "Introduction to Node.js",
+    "description": "Learn the basics of Node.js, including modules, event-driven programming, and more.",
+    "createdAt": "2024-08-16T14:55:22.123Z",
+    "updatedAt": "2024-08-16T14:55:22.123Z"
+  }
+}
+```
+
+**Get All Courses**: GET `/course`
+```
+Response;
+[
+  {
+    "id": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc",
+    "title": "Introduction to Node.js",
+    "description": "Learn the basics of Node.js, including modules, event-driven programming, and more."
+  },
+  {
+    "id": "d9e7a6c4-6e3b-4f7c-a7c6-123456789def",
+    "title": "Advanced Node.js",
+    "description": "Deep dive into Node.js with topics like performance optimization and asynchronous programming."
+  }
+]
+```
+
+**Get Course by ID**: GET `/course/:id`
+```
+Response;
+{
+  "id": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc",
+  "title": "Introduction to Node.js",
+  "description": "Learn the basics of Node.js, including modules, event-driven programming, and more."
+}
+```
+
+**Update Course**: PUT `/course/:id`
+```
+Request;
+{
+  "title": "Introduction to Node.js (Updated)",
+  "description": "An updated course on Node.js basics with new content."
+}
+
+Response;
+{
+  "course updated successfully": {
+    "id": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc",
+    "title": "Introduction to Node.js (Updated)",
+    "description": "An updated course on Node.js basics with new content."
+  }
+}
+```
+
+**Delete Course**: DELETE `/course/:id`
+```
+Response;
+{
+  "message": "course deleted successfully"
+}
+```
