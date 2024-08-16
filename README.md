@@ -375,24 +375,31 @@ During the development of the Kontex content management system, several key assu
 **Tech Stack and Frameworks**:
 
 _Node.js and Express.js_ were chosen for the backend due to their flexibility, scalability, and extensive community support.
+
 _Sequelize ORM_ was selected to manage database interactions, given its robust features for handling complex queries, associations, and migrations.
+
 _PostgreSQL_ was utilized as the primary database, leveraging its reliability, performance, and compatibility with Sequelize.
+
 _Redis_ was integrated for caching to enhance performance, particularly for frequently accessed data like course and lesson information.
 
 **Data Model Design**:
 
 The application was structured around three core entities: _User_, _Course_, and _Lesson_.
+
 Relationships between these entities were carefully defined to ensure data integrity and simplify query operations. For instance, a _Course_ can have multiple _Lessons_, and lessons are automatically deleted if the associated course is removed (cascading delete).
 
 **Security Measures**:
 
 Authentication and authorization were handled using _JWT (JSON Web Tokens)_, providing a secure method to verify user identity and permissions.
+
 Passwords were securely stored using _bcryptjs_ to hash and salt passwords, protecting user credentials from potential breaches.
+
 Environment variables managed sensitive data such as database credentials, JWT secrets, and email service credentials. These were kept out of the source code to avoid exposure.
 
 **Performance Considerations**:
 
 Caching with _Redis_ was implemented to reduce database load and speed up response times for common requests.
+
 API rate limiting using _express-rate-limit_ was employed to protect against denial-of-service attacks and ensure the API could handle high traffic efficiently.
 
 **Error Handling**:
@@ -402,14 +409,18 @@ A consistent and informative error-handling strategy was put in place across the
 **Development and Deployment Environment**:
 
 The application was designed to run locally for development with environment-specific configurations stored in a `.env` file. This file includes configuration for the application’s port, database connection string, Redis connection, and email credentials.
+
 _Nodemon_ was used to enhance development efficiency by automatically restarting the server on file changes.
 
 **Assumptions**:
 
 It was assumed that users interacting with the API would have valid authentication tokens.
+
 The application’s scalability was anticipated, hence the design of modular and reusable components. Future enhancements or scaling needs were considered during the initial setup to accommodate potential growth.
 
 **API Documentation**:
 
 API endpoints were documented in a clear and concise manner, allowing for easy interaction and testing of the application’s features. The decision was made to integrate caching logic directly into the route handlers to ensure that both cached and fresh data were accessible through the same endpoints.
+
+
 These decisions and assumptions were integral to the project, guiding the development process and ensuring that the _**Kontex**_ application is secure, performant, and easy to maintain. The aim was to build a robust foundation that could support future enhancements and scale with the needs of its users.
