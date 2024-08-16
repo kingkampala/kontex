@@ -17,12 +17,53 @@ The core features include:
 **Security**: Robust security practices are implemented to protect user data and secure the application from common web vulnerabilities.
 
 
-### Base URL
-Kontex API backend is hosted at:
+### Setup Instructions to Run the Application Locally
+To run the Kontex application locally, follow the steps below:
 
-`https://kontex.onrender.com`
+1. **Clone the Repository**
+First, clone the repository to your local machine using the following command:
+```
+git clone https://github.com/kingkampala/kontex.git
+```
 
-This is the base URL for the Kontex API, which is intended to be accessed by the application's frontend. It serves as the foundation for managing various entities within the application, ensuring efficient handling of users, courses, lessons, and other related resources.
+2. **Navigate to the Project Directory**
+Change into the project's root directory:
+```
+cd kontex
+``
+
+3. **Install Dependencies**
+Install all required dependencies using `npm`:
+```
+npm install
+```
+
+4. **Create a `.env` File**
+Create a `.env` file in the root directory of the project and add the following environment variables:
+```
+PORT=2810
+DB_URL=postgres://<username>:<password>@<host>/<database>
+JWT_SECRET=your_jwt_secret
+REDIS_HOST=your_redis_host
+REDIS_PORT=your_redis_port
+REDIS_PASSWORD=your_redis_password
+EMAIL=your_email_address
+EMAIL_PASSWORD=your_email_password
+```
+Replace the placeholders with your actual credentials or use the provided values.
+
+5. **Start the Application**
+Start the application using the following command:
+```
+npm start
+```
+The application will run on `http://localhost:2810` by default. If the specified port is already in use, you can modify the `PORT` in your `.env` file.
+
+6. Test the Application
+After starting the application, you can test the API endpoints using tools like Postman or cURL.
+
+7. Stop the Application
+To stop the application, use `Ctrl + C` in the terminal where the application is running.
 
 
 ### User Endpoint
@@ -304,3 +345,11 @@ Response;
   "message": "lesson deleted successfully"
 }
 ```
+
+
+### Base URL
+Kontex API backend is hosted at:
+
+`https://kontex.onrender.com`
+
+This is the base URL for the Kontex API, which is intended to be accessed by the application's frontend. It serves as the foundation for managing various entities within the application, ensuring efficient handling of users, courses, lessons, and other related resources.
