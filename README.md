@@ -223,3 +223,84 @@ Response;
   "message": "course deleted successfully"
 }
 ```
+
+
+### Lesson Endpoint
+**Create a New Lesson**: POST `/lesson`
+```
+Request;
+{
+  "title": "Introduction to Node.js Basics",
+  "content": "This lesson covers the fundamentals of Node.js, including modules, event-driven architecture, and more.",
+  "courseId": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc"
+}
+
+Response;
+{
+  "lesson created successfully": {
+    "id": "e8b7c1f6-8f4c-4d1e-8a6f-123456789abc",
+    "title": "Introduction to Node.js Basics",
+    "content": "This lesson covers the fundamentals of Node.js, including modules, event-driven architecture, and more.",
+    "courseId": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc",
+    "createdAt": "2024-08-16T14:55:22.123Z",
+    "updatedAt": "2024-08-16T14:55:22.123Z"
+  }
+}
+```
+
+**Get All Lessons by Course**: GET `/lesson/:courseId`
+```
+Response;
+[
+  {
+    "id": "e8b7c1f6-8f4c-4d1e-8a6f-123456789abc",
+    "title": "Introduction to Node.js Basics",
+    "content": "This lesson covers the fundamentals of Node.js, including modules, event-driven architecture, and more.",
+    "courseId": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc"
+  },
+  {
+    "id": "f3a2d1e9-5e2c-4b8f-a8e2-123456789def",
+    "title": "Advanced Node.js Concepts",
+    "content": "This lesson delves deeper into advanced Node.js topics like clustering and scaling.",
+    "courseId": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc"
+  }
+]
+```
+
+**Get Lesson by ID**: GET `/lesson/:id`
+```
+Response;
+{
+  "id": "e8b7c1f6-8f4c-4d1e-8a6f-123456789abc",
+  "title": "Introduction to Node.js Basics",
+  "content": "This lesson covers the fundamentals of Node.js, including modules, event-driven architecture, and more.",
+  "courseId": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc"
+}
+```
+
+**Update Lesson**: PUT `/lesson/:id`
+```
+Request;
+{
+  "title": "Introduction to Node.js Basics (Updated)",
+  "content": "An updated lesson covering the fundamentals of Node.js with new content."
+}
+
+Response;
+{
+  "lesson updated successfully": {
+    "id": "e8b7c1f6-8f4c-4d1e-8a6f-123456789abc",
+    "title": "Introduction to Node.js Basics (Updated)",
+    "content": "An updated lesson covering the fundamentals of Node.js with new content.",
+    "courseId": "c5e3d1f1-4b4c-4a8e-b8f5-123456789abc"
+  }
+}
+```
+
+**Delete Lesson**: DELETE `/lesson/:id`
+```
+Response;
+{
+  "message": "lesson deleted successfully"
+}
+```
