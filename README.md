@@ -36,6 +36,7 @@ Request;
   "password": "Password123!",
   "confirmPassword": "Password123!"
 }
+
 Response;
 {
   "user registered successfully": {
@@ -48,5 +49,102 @@ Response;
     "createdAt": "2024-08-16T14:55:22.123Z",
     "updatedAt": "2024-08-16T14:55:22.123Z"
   }
+}
+```
+
+**Login a New User**: POST `/user/login`
+```
+Request;
+{
+  "loginIdentifier": "johndoe" OR "johndoe@example.com",
+  "password": "Password123!"
+}
+
+Response;
+{
+  "user login successful": {
+    "id": "c3b3d6c6-4b2e-4a4d-8af2-123456789abc",
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@example.com"
+  },
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+}
+```
+
+**Reset Password**: PATCH `/user/:id`
+```
+Request;
+{
+  "password": "OldPassword123!",
+  "newPassword": "NewPassword123!",
+  "confirmPassword": "NewPassword123!"
+}
+
+Response;
+{
+  "password reset successfully": {
+    "id": "c3b3d6c6-4b2e-4a4d-8af2-123456789abc",
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@example.com"
+  }
+}
+```
+
+**Get All Users**: GET `/user`
+```
+Response;
+[
+  {
+    "id": "c3b3d6c6-4b2e-4a4d-8af2-123456789abc",
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@example.com"
+  },
+  {
+    "id": "b7b8e9e6-4f3e-4a4c-8cf3-123456789def",
+    "name": "Jane Doe",
+    "username": "janedoe",
+    "email": "janedoe@example.com"
+  }
+]
+```
+
+**Get User by ID**: GET `/user/:id`
+```
+Response;
+{
+  "id": "c3b3d6c6-4b2e-4a4d-8af2-123456789abc",
+  "name": "John Doe",
+  "username": "johndoe",
+  "email": "johndoe@example.com"
+}
+```
+
+**Update User**: PUT `/user/:id`
+```
+Request;
+{
+  "username": "johnnydoe",
+  "email": "johnnydoe@example.com"
+}
+
+Response;
+{
+  "user updated successfully": {
+    "id": "c3b3d6c6-4b2e-4a4d-8af2-123456789abc",
+    "name": "John Doe",
+    "username": "johnnydoe",
+    "email": "johnnydoe@example.com"
+  }
+}
+```
+
+**Delete User**: DELETE `/user/:id`
+```
+Response;
+{
+  "message": "user deleted successfully"
 }
 ```
