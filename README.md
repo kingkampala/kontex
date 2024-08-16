@@ -23,3 +23,30 @@ Kontex API backend is hosted at:
 `https://kontex.onrender.com`
 
 This is the base URL for the Kontex API, which is intended to be accessed by the application's frontend. It serves as the foundation for managing various entities within the application, ensuring efficient handling of users, courses, lessons, and other related resources.
+
+
+### User Endpoint
+**Register a New User**: POST `/user/register`
+```
+Request;
+{
+  "name": "John Doe",
+  "username": "johndoe",
+  "email": "johndoe@example.com",
+  "password": "Password123!",
+  "confirmPassword": "Password123!"
+}
+Response;
+{
+  "user registered successfully": {
+    "id": "c3b3d6c6-4b2e-4a4d-8af2-123456789abc",
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "password": "$2a$10$...",
+    "confirmPassword": null,
+    "createdAt": "2024-08-16T14:55:22.123Z",
+    "updatedAt": "2024-08-16T14:55:22.123Z"
+  }
+}
+```
