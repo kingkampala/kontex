@@ -1,5 +1,5 @@
-const { sequelize } = require('../src/db');
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
+const sequelize = require('../src/db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../model/user');
@@ -39,7 +39,7 @@ const register = async (req, res) => {
         }
     
         const existingUsername = await sequelize.query(
-            'SELECT * FROM "Users" WHERE "username" COLLATE "en_US.utf8" = :username',
+            'SELECT * FROM "users" WHERE "username" COLLATE "en_US.utf8" = :username',
             {
                 replacements: { username },
                 type: Sequelize.QueryTypes.SELECT
@@ -50,7 +50,7 @@ const register = async (req, res) => {
         }
 
         const existingEmail = await sequelize.query(
-            'SELECT * FROM "Users" WHERE "email" COLLATE "en_US.utf8" = :email',
+            'SELECT * FROM "users" WHERE "email" COLLATE "en_US.utf8" = :email',
             {
                 replacements: { email },
                 type: Sequelize.QueryTypes.SELECT
@@ -169,7 +169,7 @@ const reset = async (req, res) => {
         await sendEmail(
             user.email,
             'Password Reset Successful',
-            `Hi ${user.name},\n\nYour password has been successfully reset. If this was not you, please contact support immediately.\n\nBest regards,\nKontex Team`
+            `Hi ${user.name},\n\nYour password has been reset successfully. If this was not you, please contact support immediately.\n\nBest regards,\nKontex Team`
         );
         
         res.status(200).send({'password resetted successfully': user});
@@ -204,7 +204,7 @@ const update = async (req, res) => {
   
         if (username && username !== user.username) {
             const existingUsername = await sequelize.query(
-                'SELECT * FROM "Users" WHERE "username" COLLATE "en_US.utf8" = :username',
+                'SELECT * FROM "users" WHERE "username" COLLATE "en_US.utf8" = :username',
                 {
                     replacements: { username },
                     type: Sequelize.QueryTypes.SELECT
@@ -214,7 +214,7 @@ const update = async (req, res) => {
             return res.status(409).send('username already exists');
           }
           user.username = username;
-          updateMessage += 'Your username has been successfully updated.\n';
+          updateMessage += 'Your username has been updated successfully.\n';
         }
   
         if (email) {
@@ -223,7 +223,7 @@ const update = async (req, res) => {
           }
           if (email !== user.email) {
                 const existingEmail = await sequelize.query(
-                    'SELECT * FROM "Users" WHERE "email" COLLATE "en_US.utf8" = :email',
+                    'SELECT * FROM "users" WHERE "email" COLLATE "en_US.utf8" = :email',
                     {
                         replacements: { email },
                         type: Sequelize.QueryTypes.SELECT
@@ -233,7 +233,7 @@ const update = async (req, res) => {
               return res.status(409).send('email already exists');
             }
             user.email = email;
-            updateMessage += 'Your email has been successfully updated.\n';
+            updateMessage += 'Your email has been updated successfully.\n';
           }
         }
   
@@ -295,7 +295,7 @@ const get = async (req, res) => {
 const getId = async (req, res) => {
     try {
         const userId = req.params.id;
-        const user = await User.findById(userId);
+        const user = await User.findByPk(userId);
         if (!user) {
             return { data: null, status: 404 };
         }

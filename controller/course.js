@@ -5,7 +5,7 @@ const create = async (req, res) => {
   try {
     const { title, description } = req.body;
     const newCourse = await Course.create({ title, description });
-    res.status(201).json({ course: newCourse });
+    res.status(201).json({ 'course created successfully': newCourse });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'error creating course' });
@@ -15,7 +15,7 @@ const create = async (req, res) => {
 const get = async (req, res) => {
   try {
     const courses = await Course.findAll({ include: [Lesson] });
-    res.status(200).json({ courses });
+    return courses;
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'error fetching courses' });
@@ -29,7 +29,7 @@ const getById = async (req, res) => {
     if (!course) {
       return res.status(404).json({ error: 'course not found' });
     }
-    res.status(200).json({ course });
+    return course;
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'error fetching course' });
@@ -44,10 +44,19 @@ const update = async (req, res) => {
     if (!course) {
       return res.status(404).json({ error: 'course not found' });
     }
-    course.title = title;
-    course.description = description;
+    if (title !== undefined) {
+        course.title = title;
+    }
+    if (description !== undefined) {
+        course.description = description;
+    }
+
     await course.save();
-    res.status(200).json({ course });
+
+    await deleteCache(`course:${id}`);
+    await deleteCache('courses');
+
+    res.status(201).json({ 'course updated successfully': course });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'error updating course' });

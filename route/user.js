@@ -8,7 +8,7 @@ router.post('/register', register);
 
 router.post('/login', login);
 
-router.patch('/:id/reset', authenticateToken, reset);
+router.patch('/:id', authenticateToken, reset);
 
 router.get('/', authenticateToken, async (req, res, next) => {
     try {
