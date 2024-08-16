@@ -1,20 +1,13 @@
 const express = require('express');
 const { Client } = require('pg');
-const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 const app = express();
 const syncDb = require('../src/sync');
+const limiter = require('../middleware/limit');
+const errorHandler = require('../middleware/error');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
-
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    message: 'too many requests, please try again later.'
-});
-
-app.use(limiter);
+app.use(express.urlencoded({ extended: true }));
 
 const userRoute = require('../route/user');
 const courseRoute = require('../route/course');
@@ -26,10 +19,8 @@ app.use(`/course`, courseRoute);
 app.use(`/lesson`, lessonRoute);
 app.use(`/search`, searchRoute);
 
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ message: 'SOMETHING WENT WRONG!!!' });
-});
+app.use(limiter);
+app.use(errorHandler);
 
 const { DB_URL } = process.env;
 
