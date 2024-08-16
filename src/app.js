@@ -5,11 +5,15 @@ const app = express();
 const syncDb = require('../src/sync');
 
 const userRoute = require('../route/user');
+const courseRoute = require('../route/course');
+const lessonRoute = require('../route/lesson');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.use(`/user`, userRoute);
+app.use(`/course`, courseRoute);
+app.use(`/lesson`, lessonRoute);
 
 const { DB_URL } = process.env;
 
