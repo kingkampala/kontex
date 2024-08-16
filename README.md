@@ -70,7 +70,7 @@ The application will run on `http://localhost:2810` by default. If the specified
 
 After starting the application, you can test the API endpoints using tools like Postman or cURL.
 
-8. **Stop the Application**
+9. **Stop the Application**
 
 To stop the application, use `Ctrl + C` in the terminal where the application is running.
 
